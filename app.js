@@ -4,8 +4,9 @@ const http = require('http');
 const { createMessage } = require('./utils/createMessage');
 const app = express();
 const server = http.createServer(app);
-const io = require("socket.io")(server);
-
+const io = require("socket.io")(server, {
+    transports: ['polling']
+});
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
