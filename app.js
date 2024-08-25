@@ -5,7 +5,11 @@ const { createMessage } = require('./utils/createMessage');
 const app = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
-    transports: ['polling']
+    transports: ['polling'],
+    cors: {
+        origin: "*", // Allow requests from any origin, or specify your frontend's URL
+        methods: ["GET", "POST"]
+    }
 });
 const PORT = process.env.PORT || 3000;
 
